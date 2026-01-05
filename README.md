@@ -119,7 +119,6 @@ Model hyperparameters are selected based on **validation Hits@20**, including:
 - Hidden dimension size (`hidden_dim`)
 - Dropout rates in MLP feed-forward networks
 - Choice of nonlinear activation functions
-- `/data' contains message passing edges and trained .pt model files.
 ---
 
 ## **Model Testing**
@@ -127,3 +126,4 @@ Model hyperparameters are selected based on **validation Hits@20**, including:
 - Evaluation and testing are performed under `torch.no_grad()` to disable gradient computation
 - Hits@20 is computed using the official **OGB evaluator**
 - Metrics are reported separately for **validation** and **test** edge splits
+- `/data` contains `.pth` message passing edges files and trained `.pt` model files
