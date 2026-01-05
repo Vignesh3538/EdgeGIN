@@ -119,7 +119,7 @@ Model hyperparameters are selected based on **validation Hits@20**, including:
 - Hidden dimension size (`hidden_dim`)
 - Dropout rates in MLP feed-forward networks
 - Choice of nonlinear activation functions
-
+- `/data' contains message passing edges and trained .pt model files.
 ---
 
 ## **Model Testing**
