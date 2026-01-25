@@ -60,7 +60,7 @@ This project explores three variations of Graph Neural Networks (GNNs).
 
 
 ### **1. GNN with weighted edge features**
-*Location: `/src/EdgeGNN`*
+*Location: `/src/EdgeGIN`*
 
 This notebook implements variant of GNN, explicitly incorporating edge features into the message-passing phase by learning edge-specific weights.
 
