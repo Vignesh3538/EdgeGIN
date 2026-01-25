@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Dataset-ogbl--ddi-green?style=flat" />
 </p>
 
-## ⚠️ **Dataset Overview**
+##  **Dataset Overview**
 > **The `ogbl-ddi` dataset is a homogeneous, unweighted, undirected graph representing the drug-drug interaction network.**
 >
 > - **Nodes:** FDA-approved or experimental drugs.
@@ -53,27 +53,27 @@ These features are computed using **chunked processing on a CUDA device**. While
 
 ---
 
-## **GIN Models**
+## **GNN Models**
 
-This project explores three variations of Graph Isomorphism Networks (GIN).
+This project explores three variations of Graph Neural Networks (GNNs).
 
 
 
-### **1. GIN with weighted edge features**
-*Location: `/src/EdgeGIN`*
+### **1. GNN with weighted edge features**
+*Location: `/src/EdgeGNN`*
 
-This notebook implements variant of GIN, explicitly incorporating edge features into the message-passing phase by learning edge-specific weights.
+This notebook implements variant of GNN, explicitly incorporating edge features into the message-passing phase by learning edge-specific weights.
 
 #### **Architecture Details**
 
 * **Global Node Embedding Matrix (Layer-Independent):**
-    A single learnable node embedding table is initialized using Xavier uniform initialization. It is shared across all GIN layers and serves as the input to the first layer.
+    A single learnable node embedding table is initialized using Xavier uniform initialization. It is shared across all GNN layers and serves as the input to the first layer.
 
 * **Precomputed Structural Edge Feature Tensor (Global, Non-Learnable):**
     An 8-dimensional structural feature vector is associated with each unordered node pair $(i, j)$. These are fixed, reused across all layers, and indexed symmetrically using $(\min(i, j), \max(i, j))$ to enforce undirected consistency.
 
-* **Edge-Aware GIN Layers (Layer-Specific):**
-    Two `EdgeAwareGINLayer` instances are stacked. Each layer possesses independent parameters, including a residual coefficient $\epsilon$, an edge-weight MLP, and a node-update MLP. No parameters are shared between layers.
+* **Edge-Aware GNN Layers (Layer-Specific):**
+    Two `EdgeAwareGNNLayer` instances are stacked. Each layer possesses independent parameters, including a residual coefficient $\epsilon$, an edge-weight MLP, and a node-update MLP. No parameters are shared between layers.
 
 * **Edge-Weight Computation (mlp_a):**
     Within each layer, an MLP ($8 \rightarrow 32 \rightarrow 1$) with LayerNorm, ReLU, and Dropout ($0.1$) maps fixed edge features to a scalar weight. These weights are recomputed at every layer and multiplicatively modulate neighbor messages.
